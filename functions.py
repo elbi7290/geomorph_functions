@@ -11,7 +11,7 @@ def bulk_density (pg, n, pw=997):
     pb = pg (1-n) + pw(n)
     return pb
 
-def factor_of_safety (c, pb, h, theta, pw=997, wt, tan_phi):
+def factor_of_safety (c, pb, h, theta,  wt, tan_phi, pw=997):
     """This function assesses the stability of a hill slope,
     by looking at the ratio of resisting stresses to driving stress
     this function takes arguments:
@@ -25,7 +25,7 @@ def factor_of_safety (c, pb, h, theta, pw=997, wt, tan_phi):
      - acceleration due to gravity at the Earth's surface is 9.8 (m/s²)
      and assesses the stability of the hill slope by finding Fs and seeing if it is greater or less than 1
      """
-    fs= (c+(pb*9.87*h*(math.cos(theta)))-(pw*9.8*wt)*tan_phi)/(pb*9.87*h*math.sin(theta))
+    fs= (c+(pb*9.87*h*(np.cos(theta)))-(pw*9.8*wt)*tan_phi)/(pb*9.87*h*np.sin(theta))
     if fs > 1:
         print("The factor of safety is", fs ,"therefore the slope should be stable")
     elif fs < 1:
